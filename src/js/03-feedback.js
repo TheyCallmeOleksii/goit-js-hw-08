@@ -13,39 +13,18 @@ let obj = {};
 
 function changeFields(event) {
   obj[event.target.name] = event.target.value.trim();
-  // obj.email = formEl.elements.email.value;
-  // obj.message = formEl.elements.message.value;
-  localStorage.setItem('feedback-form-state', JSON.stringify(obj));
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(obj));
 }
 
 function sendBtn(event) {
   event.preventDefault();
-  // const saveField = localStorage.getItem('feedback-form-state');
   console.log(obj);
   obj = {};
   localStorage.removeItem(STORAGE_KEY);
   event.target.reset();
-
-  // if (saveField) {
-  //   const parceSaveField = JSON.parse(saveField);
-  //   console.log(parceSaveField);
-  //   localStorage.removeItem('feedback-form-state');
-  //   formEl.elements.email.value = '';
-  //   formEl.elements.message.value = '';
-  // }
 }
 
-// function checkLocalSt() {
-//   const saveField = localStorage.getItem('feedback-form-state');
-
-//   if (saveField) {
-//     const parceSaveField = JSON.parse(saveField);
-//     formEl.elements.email.value = parceSaveField.email;
-//     formEl.elements.message.value = parceSaveField.message;
-//   }
-// }
-
-function checklocalSt() {
+function checkLocalSt() {
   try {
     const data = localStorage.getItem(STORAGE_KEY);
     if (!data) return;
